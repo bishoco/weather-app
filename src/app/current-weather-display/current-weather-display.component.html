@@ -1,1 +1,5 @@
-<p>current-weather-display works!</p>
+<div layout="row" layout-align="center">
+  <fa-icon [icon]="faCloudSun" size="3x" class="condition-icon"></fa-icon>
+  <span class="temperature">{{ currentWeather.temperature }}</span>
+  <span>F°</span>
+</div>

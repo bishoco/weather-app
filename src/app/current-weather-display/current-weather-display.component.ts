@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { faCloudSun } from '@fortawesome/free-solid-svg-icons';
+
+import { CurrentWeather } from '../models/current-weather.model';
 
 @Component({
   selector: 'current-weather-display',
@@ -6,6 +9,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./current-weather-display.component.css']
 })
 export class CurrentWeatherDisplayComponent implements OnInit {
+  faCloudSun = faCloudSun;
+  
+  currentWeather: CurrentWeather = {
+    temperature: 96,
+    condition: 'partly-cloudy'
+
+  }
 
   constructor() { }
 
