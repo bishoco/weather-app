@@ -1,0 +1,22 @@
+  .toolbar {
+    height: 60px;
+    margin: -8px;
+    display: flex;
+    align-items: center;
+    background-color: #1976d2;
+    color: white;
+    font-weight: 500;
+  }
+
+  .toolbar span {
+    margin: 0 16px;
+  }
+
+  .weather-card {
+    max-width: 400px;
+    margin: 16px;
+    background:rgba(0,0,0,.06);
+    display: flex;
+    flex-direction: column;
+  }
+  
