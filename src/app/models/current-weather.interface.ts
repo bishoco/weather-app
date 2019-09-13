@@ -1,4 +1,4 @@
-export class CurrentWeather {
+export interface CurrentWeather {
     temperature: number;
     condition: string;
   }

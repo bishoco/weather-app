@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { faCloudSun } from '@fortawesome/free-solid-svg-icons';
 
-import { CurrentWeather } from '../models/current-weather.model';
+import { CurrentWeather } from '../models/current-weather.interface';
 
 @Component({
   selector: 'current-weather-display',
