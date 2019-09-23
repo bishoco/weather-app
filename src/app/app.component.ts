@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { LocationService } from './location/location.service';
-import { WeatherService } from './weather.service';
+import { NwsApiService } from './nws-api.service';
  
 @Component({
   selector: 'app-root',
@@ -11,13 +11,11 @@ import { WeatherService } from './weather.service';
 export class AppComponent {
   title = 'Weather Jester';
 
-
   constructor(private locationService: LocationService,
-    private weatherService: WeatherService ) {
+    private nwsApiService: NwsApiService ) {
     locationService.coordinates$.subscribe(
       coordinates => {
-        console.log(coordinates);
-        weatherService.getNwsPoints(coordinates);
+        nwsApiService.getNwsPointsApi(coordinates);
       });
   }
   
