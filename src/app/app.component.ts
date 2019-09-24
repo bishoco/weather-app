@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { LocationService } from './location/location.service';
-import { WeatherService } from './weather.service';
+import { NwsApiService } from './nws-api.service';
  
 @Component({
   selector: 'app-root',
@@ -11,13 +11,11 @@ import { WeatherService } from './weather.service';
 export class AppComponent {
   title = 'Weather Jester';
 
-
-  constructor(private locationService: LocationService,
-    private weatherService: WeatherService ) {
+  constructor(private locationService: LocationService, private nwsApiService: NwsApiService ) {
+    //As soon as the location is determined from the browser, call the NWS api to get location and forecast info
     locationService.coordinates$.subscribe(
       coordinates => {
-        console.log(coordinates);
-        weatherService.getNwsPoints(coordinates);
+        nwsApiService.getNwsPointsApi(coordinates);
       });
   }
   

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LocationService } from './location.service';
-import { WeatherService } from '../weather.service';
+import { NwsApiService } from '../nws-api.service';
 import { Location } from '../models/location.interface';
 
 @Component({
@@ -12,12 +12,12 @@ export class LocationComponent implements OnInit {
   coordinates:Coordinates;
   location:Location;
 
-  constructor(private locationService: LocationService, private weatherService: WeatherService) {
+  constructor(private locationService: LocationService, private nwsApiService: NwsApiService) {
     locationService.coordinates$.subscribe(
       coordinates => {
         this.coordinates = coordinates;
     });
-    weatherService.location$.subscribe(
+    nwsApiService.location$.subscribe(
       location => {
         this.location = location;
     });
