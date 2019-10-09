@@ -9,7 +9,7 @@ import { NwsApiService } from './nws-api.service';
   providers: [ LocationService ]
 })
 export class AppComponent {
-  title = 'Weather Jester';
+  title = 'Weather Wizard';
 
   constructor(private locationService: LocationService, private nwsApiService: NwsApiService ) {
     //As soon as the location is determined from the browser, call the NWS api to get location and forecast info

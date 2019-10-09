@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { WeatherCondition } from './models/weather-condition.enum';
 import { Subject } from 'rxjs';
+
+import { WeatherCondition } from './models/weather-condition.enum';
 import { Forecast } from './models/forecast.interface';
 
 @Injectable({

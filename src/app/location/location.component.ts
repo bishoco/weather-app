@@ -8,7 +8,7 @@ import { Location } from '../models/location.interface';
   templateUrl: './location.component.html',
   styleUrls: ['./location.component.css']
 })
-export class LocationComponent implements OnInit {
+export class LocationComponent {
   coordinates:Coordinates;
   location:Location;
 
@@ -22,12 +22,5 @@ export class LocationComponent implements OnInit {
         this.location = location;
     });
 
-  }
-
-
-  ngOnChanges() {
-  }
-
-  ngOnInit() {
   }
 }

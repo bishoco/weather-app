@@ -4,4 +4,5 @@ export interface CurrentWeather {
     temperature: number;
     condition: WeatherCondition;
     conditionText: String;
+    isDayTime: boolean;
   }

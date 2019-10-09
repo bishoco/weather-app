@@ -9,13 +9,16 @@ import { AppComponent } from './app.component';
 import { CurrentWeatherDisplayComponent } from './current-weather-display/current-weather-display.component';
 import { LocationComponent } from './location/location.component';
 import { WeatherIcon } from './weather-icon/weather-icon.component';
+import { ForecastDisplayComponent } from './forecast-display/forecast-display.component';
+import { ForecastDisplayService } from './forecast-display/forecast-display.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     CurrentWeatherDisplayComponent,
     LocationComponent,
-    WeatherIcon
+    WeatherIcon,
+    ForecastDisplayComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +27,7 @@ import { WeatherIcon } from './weather-icon/weather-icon.component';
     FontAwesomeModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [ForecastDisplayService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
