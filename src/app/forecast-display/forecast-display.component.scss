@@ -1,0 +1,22 @@
+.forecast-display {
+    display: flex;
+    flex-direction: row;
+
+    .forecast-day-display{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 8px;
+        
+
+    }
+
+    .forecast-temp-display{
+        margin-top: 5px;
+        color: grey;
+    }
+
+    .forecast-slash{
+        font-size: 12px;
+    }
+}

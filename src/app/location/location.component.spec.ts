@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClient, HttpHandler } from '@angular/common/http';
 
 import { LocationComponent } from './location.component';
+import { LocationService } from './location.service';
+import { NwsApiService } from '../nws-api.service';
 
 describe('LocationComponent', () => {
   let component: LocationComponent;
@@ -8,7 +11,8 @@ describe('LocationComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LocationComponent ]
+      declarations: [ LocationComponent ],
+      providers: [ LocationService, NwsApiService, HttpClient, HttpHandler ]
     })
     .compileComponents();
   }));

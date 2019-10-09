@@ -1,20 +1,22 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-import { WeatherIconComponent } from './weather-icon.component';
+import { WeatherIcon } from './weather-icon.component';
 
 describe('WeatherIconComponent', () => {
-  let component: WeatherIconComponent;
-  let fixture: ComponentFixture<WeatherIconComponent>;
+  let component: WeatherIcon;
+  let fixture: ComponentFixture<WeatherIcon>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ WeatherIconComponent ]
+      imports: [ FontAwesomeModule ],
+      declarations: [ WeatherIcon ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(WeatherIconComponent);
+    fixture = TestBed.createComponent(WeatherIcon);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

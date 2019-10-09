@@ -1,26 +1,29 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-import { CurrentWeatherDisplayComponent } from './current-weather-display.component';
+import { ForecastDisplayComponent } from './forecast-display.component';
 import { WeatherIcon } from '../weather-icon/weather-icon.component';
 import { WeatherService } from '../weather.service';
-import { NwsApiService } from '../nws-api.service';
+import { ForecastDisplayService } from './forecast-display.service';
 
-describe('CurrentWeatherDisplayComponent', () => {
-  let component: CurrentWeatherDisplayComponent;
-  let fixture: ComponentFixture<CurrentWeatherDisplayComponent>;
+describe('ForecastDisplayComponent', () => {
+  let component: ForecastDisplayComponent;
+  let fixture: ComponentFixture<ForecastDisplayComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [ FontAwesomeModule ],
-      declarations: [ CurrentWeatherDisplayComponent, WeatherIcon ],
-      providers: [ WeatherService ]
+      declarations: [ ForecastDisplayComponent,
+          WeatherIcon ],
+        providers: [WeatherService,
+          ForecastDisplayService
+        ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CurrentWeatherDisplayComponent);
+    fixture = TestBed.createComponent(ForecastDisplayComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

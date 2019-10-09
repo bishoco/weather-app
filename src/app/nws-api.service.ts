@@ -23,6 +23,7 @@ export class NwsApiService {
   constructor(private http:HttpClient, private weatherService:WeatherService) { 
   }
 
+  // TODO: add error nandling
   getNwsPointsApi(coordinates : Coordinates) {
     this.http.get(this.nwsPointsUrl + coordinates.latitude + ',' + coordinates.longitude)
       .subscribe(

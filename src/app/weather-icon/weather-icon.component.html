@@ -1,17 +1,3 @@
 <span [title]="conditionText">
-    <span *ngIf="condition === weatherConditionEnum.PartlyCloudy">
-        <fa-icon [icon]="faCloudSun" [size]="iconSize" class="condition-icon"></fa-icon>
-    </span>
-    <span *ngIf="condition === weatherConditionEnum.Clear">
-        <fa-icon [icon]="faSun" [size]="iconSize" class="condition-icon"></fa-icon>
-    </span>
-    <span *ngIf="condition === weatherConditionEnum.Cloudy">
-        <fa-icon [icon]="faCloud" [size]="iconSize" class="condition-icon"></fa-icon>
-    </span>
-    <span *ngIf="condition === weatherConditionEnum.Rainy">
-        <fa-icon [icon]="faCloudRain" [size]="iconSize" class="condition-icon"></fa-icon>
-    </span>
-    <span *ngIf="condition === weatherConditionEnum.Stormy">
-        <fa-icon [icon]="faBolt" [size]="iconSize" class="condition-icon"></fa-icon>
-    </span>
+    <fa-icon [icon]="icon" [size]="iconSize" class="condition-icon"></fa-icon>
 </span>

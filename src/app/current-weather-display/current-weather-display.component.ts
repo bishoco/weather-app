@@ -1,9 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { CurrentWeather } from '../models/current-weather.interface';
-import { WeatherCondition } from '../models/weather-condition.enum';
 import { WeatherService } from '../weather.service';
-import { NwsApiService } from '../nws-api.service';
 import { Forecast } from '../models/forecast.interface';
 
 @Component({
@@ -11,20 +9,16 @@ import { Forecast } from '../models/forecast.interface';
   templateUrl: './current-weather-display.component.html',
   styleUrls: ['./current-weather-display.component.css']
 })
-export class CurrentWeatherDisplayComponent implements OnInit {
+export class CurrentWeatherDisplayComponent {
   
   currentWeather: CurrentWeather;
 
-  constructor(private weatherService: WeatherService, private nwsApiService: NwsApiService) {   
+  constructor(private weatherService: WeatherService) {   
     weatherService.forecastHourly$.subscribe(
       forecastHourly => {
         this.currentWeather = this.getCurrentFromForecast(forecastHourly);
       });
   }
-
-  ngOnInit() {
-  }
-
   getCurrentFromForecast(hourlyForecast: Array<Forecast>) : CurrentWeather {
     let currentWeather: CurrentWeather;
     if (hourlyForecast && hourlyForecast.length > 0) {
@@ -32,7 +26,8 @@ export class CurrentWeatherDisplayComponent implements OnInit {
       currentWeather = {
         temperature: currentForecast.temperature,
         condition: this.weatherService.determineCondition(currentForecast.shortForecast),
-        conditionText: currentForecast.shortForecast
+        conditionText: currentForecast.shortForecast,
+        isDayTime: currentForecast.isDaytime
       }
     }
     return currentWeather;
