@@ -1,9 +1,9 @@
 <span class="forecast-display">
     <div class="forecast-day-display" *ngFor="let forecast of consolidatedForecastArray">
+        <span class="forecast-day-text">{{ forecast.date | date:'EEE' }}</span>
         <weather-icon [condition]="weatherService.determineCondition(forecast.shortForecast)" iconSize="2x" [conditionText]="forecast.shortForecast"></weather-icon>
         <div class="forecast-temp-display">
-            {{ forecast.hiTemp }} 
-            / 
+            <span class="forecast-temp-day"> {{ forecast.hiTemp }} </span>
             {{ forecast.loTemp }}
         </div>
     </div>

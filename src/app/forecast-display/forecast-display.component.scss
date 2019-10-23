@@ -7,13 +7,19 @@
         flex-direction: column;
         align-items: center;
         margin: 8px;
-        
+    }
 
+    .forecast-day-text {
+        font-weight: 600;
     }
 
     .forecast-temp-display{
         margin-top: 5px;
         color: grey;
+    }
+
+    .forecast-temp-day {
+        font-weight: bold;
     }
 
     .forecast-slash{
