@@ -1,5 +1,5 @@
 <div *ngIf="currentWeather" layout="row" layout-align="center">
-  <weather-icon [condition]="currentWeather.condition" iconSize="3x" [isDaytime]="currentWeather.isDaytime" [conditionText]="currentWeather.conditionText"></weather-icon>
+  <weather-icon [condition]="currentWeather.condition" iconSize="3x" [isDaytime]="currentWeather.isDayTime" [conditionText]="currentWeather.conditionText"></weather-icon>
   <span class="temperature">{{ currentWeather.temperature }}</span>
   <span>F°</span>
 </div>

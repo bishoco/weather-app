@@ -8,8 +8,6 @@ export class ForecastDisplayService {
     constructor() { }
 
     consolidateForecasts(forecasts: Array<Forecast>): Array<ConsolidatedForecast> {
-        console.log('consolidateForecasts');
-        console.log(forecasts);
         var consolidatedMap = new Map<string,ConsolidatedForecast>();        
         for (let forecast of forecasts) {            
             var consolidatedForecast = consolidatedMap.get(

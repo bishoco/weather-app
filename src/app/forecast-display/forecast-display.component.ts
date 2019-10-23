@@ -20,7 +20,6 @@ export class ForecastDisplayComponent implements OnInit {
       forecast => {
         this.forecastArray = forecast;
         this.consolidatedForecastArray = this.forecastDisplayService.consolidateForecasts(this.forecastArray);
-        console.log(this.consolidatedForecastArray);
       });
   }
 
