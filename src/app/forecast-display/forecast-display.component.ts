@@ -15,7 +15,7 @@ export class ForecastDisplayComponent implements OnInit {
   currentDate: String;
   consolidatedForecastArray: Array<ConsolidatedForecast>;
 
-  constructor(private weatherService: WeatherService, private forecastDisplayService: ForecastDisplayService) {   
+  constructor(public weatherService: WeatherService, public forecastDisplayService: ForecastDisplayService) {   
     weatherService.forecast$.subscribe(
       forecast => {
         this.forecastArray = forecast;
