@@ -14,7 +14,7 @@ export class ForecastDisplayService {
                 formatDate(forecast.startTime, 'yyyy-MM-dd', 'en')
             );
 
-            consolidatedForecast = this.convertForecastToConsolidated(forecast, consolidatedForecast);
+            consolidatedForecast = this.addForecastToConsolidated(forecast, consolidatedForecast);
             consolidatedMap.set(
                 formatDate(forecast.startTime, 'yyyy-MM-dd', 'en'),
                 consolidatedForecast    
@@ -23,7 +23,7 @@ export class ForecastDisplayService {
         return Array.from(consolidatedMap.values());
     }
 
-    convertForecastToConsolidated (forecast: Forecast, consolidatedForecast: ConsolidatedForecast) : ConsolidatedForecast {
+    addForecastToConsolidated (forecast: Forecast, consolidatedForecast: ConsolidatedForecast) : ConsolidatedForecast {
         //Initialize consolidatedForecast if it comes in empty
         if (!consolidatedForecast) {        
             consolidatedForecast = <ConsolidatedForecast>{};
@@ -36,9 +36,9 @@ export class ForecastDisplayService {
         if (!consolidatedForecast.shortForecast) 
             consolidatedForecast.shortForecast = forecast.shortForecast;
         else if (consolidatedForecast.shortForecast && forecast.isDaytime)
-            consolidatedForecast.shortForecast = forecast.shortForecast + ' then ' + consolidatedForecast.shortForecast;
+            consolidatedForecast.shortForecast = forecast.shortForecast + '. Overnight ' + consolidatedForecast.shortForecast + '.';
         else 
-            consolidatedForecast.shortForecast = consolidatedForecast.shortForecast + ' then ' + forecast.shortForecast;
+            consolidatedForecast.shortForecast = consolidatedForecast.shortForecast + '. Overnight ' + forecast.shortForecast + '.';;
 
         if (forecast.isDaytime) 
             consolidatedForecast.hiTemp = forecast.temperature;

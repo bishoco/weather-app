@@ -31,11 +31,14 @@ export class WeatherService {
     on some key words.
   */
   determineCondition (condition : String ) : WeatherCondition {
-    if (condition.toLowerCase().includes('storms'))
+    let lowerCondition = condition.toLowerCase();
+    if (lowerCondition.includes('snow'))
+        return WeatherCondition.Snowy;
+    else if (lowerCondition.includes('storms'))
       return WeatherCondition.Stormy;
-    else if (condition.toLowerCase().includes('rain') || condition.toLowerCase().includes('showers') )
+    else if (lowerCondition.includes('rain') || lowerCondition.includes('showers') )
       return WeatherCondition.Rainy;
-    else if (condition.toLowerCase().includes('partly') || condition.toLowerCase().includes('mostly') )
+    else if (lowerCondition.includes('partly') || lowerCondition.includes('mostly') )
       return WeatherCondition.PartlyCloudy;
     else
       return WeatherCondition.Clear;
