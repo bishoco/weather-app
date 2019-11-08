@@ -16,4 +16,10 @@
     max-width: 500px;
     margin: 16px;
   }
+
+  .error-text {
+    color: red;
+    font-style: italic;
+    font-size: 12px;
+  }
   

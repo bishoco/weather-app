@@ -5,6 +5,9 @@ import { Subject }    from 'rxjs';
 import { Forecast } from './models/forecast.interface';
 import { WeatherService } from './weather.service';
 
+import FailOverForecastJson from '../assets/failOverForecast.json';
+import FailOverForecastHourlyJson from '../assets/failOverForecastHourly.json';
+
 /*
 This service calls the National Weather Service REST APIs.
 More info on the NWS API: https://www.weather.gov/documentation/services-web-api
@@ -35,28 +38,40 @@ export class NwsApiService {
   location$ = this.locationSource.asObservable();
 
   nwsPointsUrl = 'https://api.weather.gov/points/';
+ 
+  // Observable sources
+  private nwsApiErrorSource = new Subject<Boolean>();
+
+  // Observable streams
+  nwsApiError$ = this.nwsApiErrorSource.asObservable();
 
   //These are the URLs returned from the call to the NWS points API
   forecastUrl: string;
   forecastHourlyUrl: string;
 
+  failOverLocation = { city: 'Hoboken', state: 'NJ'};
+  
   constructor(private http:HttpClient, private weatherService:WeatherService) { 
   }
 
-  // TODO: add error handling
   //Call to the NWS points API
   getNwsPointsApi(coordinates : Coordinates) {
     this.http.get(this.nwsPointsUrl + coordinates.latitude + ',' + coordinates.longitude)
       .subscribe(
-        data => {
-          this.handleNwsPointsData(data);
-        });
+        data => this.handleNwsPointsData(data),
+        error => {
+          this.nwsApiErrorSource.next(true);
+          this.locationSource.next(this.failOverLocation);
+          this.weatherService.forecastSource.next(this.handleForecastApiData(FailOverForecastJson));
+          this.weatherService.forecastHourlySource.next(this.handleForecastApiData(FailOverForecastHourlyJson));
+        } 
+      );
   }
 
   /*
     Handles data from the NWS Points API call.
     This sets the location data (city and state) received.
-    This all calls the NWS daily forecast and NWS hourly forecast
+    This also calls the NWS daily forecast and NWS hourly forecast
     APIs using the URLs returned from the points API call.
   */
   handleNwsPointsData(nwsPointsData) {

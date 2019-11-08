@@ -7,3 +7,9 @@
   <current-weather-display></current-weather-display>
   <forecast-display></forecast-display>
 </mat-card>
+<div class="error-text" *ngIf="locationError">
+  Location could not be determined. So, you are now stuck in Hoboken, NJ.
+</div>
+<div class="error-text" *ngIf="nwsApiError">
+  National Weather Service could not be reached, so you are getting bogus weather in Hoboken, NJ.
+</div>

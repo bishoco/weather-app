@@ -11,6 +11,16 @@ export class LocationService {
     coordinates$ = this.coordinatesSource.asObservable();
     positionError$ = this.positionErrorSource.asObservable();
 
+    failOverCoords : Coordinates = {
+      accuracy: 1023,
+      altitude: null,
+      altitudeAccuracy: null,
+      heading: null,
+      latitude: 40.7128,
+      longitude: -74.0060,
+      speed: null
+    };
+
   constructor() { }
   
   getBrowserPosition() {
@@ -20,6 +30,7 @@ export class LocationService {
             this.coordinatesSource.next(position.coords);
           },
           error => {
+            this.coordinatesSource.next(this.failOverCoords);
             this.positionErrorSource.next(error);
           }
       );
