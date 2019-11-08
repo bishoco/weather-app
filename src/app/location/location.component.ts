@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { LocationService } from './location.service';
 import { NwsApiService } from '../nws-api.service';
 import { Location } from '../models/location.interface';

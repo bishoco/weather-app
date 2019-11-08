@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { WeatherCondition } from '../models/weather-condition.enum';
-import { faCloudSun, faBolt, faCloudRain, faMoon, faCloud, faSun, faCloudMoon } from '@fortawesome/free-solid-svg-icons';
+import { faCloudSun, faBolt, faCloudRain, faMoon, faCloud, faSun, faCloudMoon, faSnowflake,  } from '@fortawesome/free-solid-svg-icons';
 import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -14,7 +14,7 @@ export class WeatherIcon {
   constructor() { }
 
   ngOnChanges() {
-    this.icon = this.setIcon(this.condition);
+    this.icon = this.determineWeatherIcon(this.condition);
   }
 
   @Input() condition : WeatherCondition;
@@ -22,16 +22,22 @@ export class WeatherIcon {
   @Input() iconSize : string = '3x';
   @Input() isDaytime: boolean = true;
 
-  setIcon(condition: WeatherCondition) : IconDefinition {
-    if (condition === WeatherCondition.PartlyCloudy)
-      return (this.isDaytime ? faCloudSun : faCloudMoon);
-    else if (condition === WeatherCondition.Clear)
-      return (this.isDaytime ? faSun : faMoon);
-    else if (condition === WeatherCondition.Cloudy)
-      return faCloud;
-    else if (condition === WeatherCondition.Rainy)
-      return faCloudRain;
-    else if (condition === WeatherCondition.Stormy)
-      return faBolt;
+  determineWeatherIcon(condition: WeatherCondition) : IconDefinition {
+    switch (condition) {
+      case  WeatherCondition.PartlyCloudy:
+        return (this.isDaytime ? faCloudSun : faCloudMoon);
+      case WeatherCondition.Clear:
+        return (this.isDaytime ? faSun : faMoon);
+      case WeatherCondition.Cloudy:
+        return faCloud;
+      case WeatherCondition.Rainy:
+        return faCloudRain;
+      case WeatherCondition.Stormy:
+        return faBolt;
+      case WeatherCondition.Snowy:
+        return faSnowflake;
+      default:
+        return (this.isDaytime ? faSun : faMoon);;
+    }
   }
 }

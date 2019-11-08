@@ -3,5 +3,6 @@ export enum WeatherCondition {
     PartlyCloudy,
     Cloudy,
     Rainy,
-    Stormy
+    Stormy,
+    Snowy
 }

@@ -39,11 +39,11 @@ describe('ForecastDisplayService', () => {
       detailedForecast: "A slight chance of showers and thunderstorms after midnight. Mostly cloudy, with a low around 58. Southeast wind around 15 mph, with gusts as high as 30 mph. Chance of precipitation is 20%."
     }
     var consolidatedForecast: ConsolidatedForecast;
-    consolidatedForecast = service.convertForecastToConsolidated(forecastDay, consolidatedForecast);
-    consolidatedForecast = service.convertForecastToConsolidated(forecastNight, consolidatedForecast);
+    consolidatedForecast = service.addForecastToConsolidated(forecastDay, consolidatedForecast);
+    consolidatedForecast = service.addForecastToConsolidated(forecastNight, consolidatedForecast);
     expect(consolidatedForecast.hiTemp).toEqual(68);
     expect(consolidatedForecast.loTemp).toEqual(58);
     expect(consolidatedForecast.temperatureUnit).toEqual('F');
-    expect(consolidatedForecast.shortForecast).toEqual('Mostly Cloudy then Mostly Cloudy then Slight Chance Showers And Thunderstorms');
+    expect(consolidatedForecast.shortForecast).toEqual('Mostly Cloudy. Overnight Mostly Cloudy then Slight Chance Showers And Thunderstorms.');
   });
 });
